@@ -99,16 +99,16 @@
             ctx1.stroke();
 
             ctx1.beginPath()
-            ctx1.strokeStyle = 'red';
+            ctx1.strokeStyle = 'rgba(0, 255, 0, 1)';
             ctx1.moveTo(30, x);
             ctx1.lineTo(x, y);
             ctx1.stroke();
 
-            // ctx1.beginPath()
-            // ctx1.strokeStyle = 'yellow';
-            // ctx1.moveTo(y, x);
-            // ctx1.lineTo(y, y);
-            // ctx1.stroke();
+            ctx1.beginPath()
+            ctx1.strokeStyle = 'yellow';
+            ctx1.moveTo(y, x);
+            ctx1.lineTo(y, y);
+            ctx1.stroke();
         }
 
         function mouseMove(canvas, e) {
@@ -132,8 +132,8 @@
             
             let x = Math.random() * ww
             let y = Math.random() * wh
-            let s = Math.random() * 2
-            let v = Math.random() * 2
+            let s = 3
+            let v = 2
 
 
             
