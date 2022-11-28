@@ -45,7 +45,7 @@
 
         const ww = window.innerWidth
         const wh = window.innerHeight
-        
+
         //hello
 
         const cnv1 = document.querySelector('#cnv1')
@@ -54,29 +54,43 @@
         const ctx1 = cnv1.getContext('2d')
 
 
-        let size = Math.random()*ww
-        let pos = Math.random()*ww
+        let size = Math.random() * ww
+        let posX = Math.random() * ww
+        let posY = Math.random() * ww
 
-        function draw(){
-            ctx1.strokeRect(e.relativeX, pos, size, size);
-            ctx1.strokeRect(pos*2, pos*2, size/3, size/3);
-        }
-        draw()
-        
-        document.addEventListener("mouseMove",
-        mouseMoveHandler, false)
+        let x; 
+        let y;
 
-        function mouseMoveHandler(e){
-            const relativeX = e.clientX - canvas.offsetLeft;
-            if (relativeX > 0 && relativeX < canvas.width) {
-                paddleX = relativeX - paddleWidth / 2;
-            }
+        function draw() {
+            ctx1.strokeRect(x, y, size, size);
+            beginPath()
+            ctx.strokeStyle = 'blue';
+            ctx.moveTo(20, 20);
+            ctx.lineTo(200, 20);
+            ctx.stroke();
         }
 
+        function mouseMove(canvas, e) {
+            let rect = canvas.getBoundingClientRect();
+            x = event.clientX - rect.left;
+            y = event.clientY - rect.top;
+            console.log("Coordinate x: " + x,
+                "Coordinate y: " + y);
+                draw()
 
-     
+        }
 
-        
+        // draw()
+
+        cnv1.addEventListener("mousemove", function(e) {
+            mouseMove(cnv1, e);
+        });
+        // document.addEventListener("mouseMove", mouseMove)
+
+
+
+
+
         // // for(let )
 
         // function newPos() {
