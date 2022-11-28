@@ -12,13 +12,12 @@
             margin: 0;
         }
 
-        .one-line {
-            display: inline-block;
+        canvas {
+            margin: -2px;
         }
 
         #cnv0 {
             background: pink;
-            display: block;
         }
 
         #cnv1 {
@@ -28,23 +27,18 @@
 
         #cnv3 {
             background: palegreen;
-            display: block;
         }
 
-        /* #cnv2 {
-            background: pink;
-            display: block;
-        } */
     </style>
 </head>
 
 <body>
 
     <!-- <canvas id="master-cnv"></canvas> -->
-    <div class="one-line">
-        <canvas id="cnv0" width="500" height="500"></canvas>
-        <canvas id="cnv3" width="500" height="500"></canvas>
-    </div>
+
+    <canvas id="cnv0" width="500" height="500"></canvas>
+    <canvas id="cnv3" width="500" height="500"></canvas>
+
     
     <canvas id="cnv1" width="500" height="500"></canvas>
     
@@ -109,6 +103,12 @@
             ctx1.moveTo(30, x);
             ctx1.lineTo(x, y);
             ctx1.stroke();
+
+            ctx1.beginPath()
+            ctx1.strokeStyle = 'yellow';
+            ctx1.moveTo(y, x);
+            ctx1.lineTo(y, y);
+            ctx1.stroke();
         }
 
         function mouseMove(canvas, e) {
@@ -127,6 +127,7 @@
             mouseMove(cnv1, e);
 
             ctx0.drawImage(cnv1, 100, 100, 400, 400, 0, 0, 1000, 1000)
+            ctx3.drawImage(cnv1, 300, 300, 400, 400, 0, 0, 1000, 1000)
         });
         // document.addEventListener("mouseMove", mouseMove)
 
