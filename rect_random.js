@@ -9,4 +9,11 @@ function draw(ctx) {
         ctx.strokeRect(pos, pos, size, size);
         ctx.strokeRect(pos*2, pos*2, size/3, size/3);
     }
+   
+}
+
+function update(){
+    draw()
+    pos += 10
+    requestAnimationFrame(update)
 }

@@ -33,9 +33,6 @@
 
     <script>
 
-
-        const ctx = cnv1.getContext('2d')
-
         // function optimizeCanvas(cnv) {
         //     const dpr = window.devicePixelRatio
         //     const rect = cnv.getBoundingClientRect()
@@ -46,27 +43,45 @@
         //     cnv.style.height = `${rect.height}px`
         // }
 
-        // const ww = window.innerWidth
-        // const wh = window.innerHeight
+        const ww = window.innerWidth
+        const wh = window.innerHeight
 
-        // const masterCnv = document.querySelector('#master-cnv')
-        // masterCnv.width = 400
-        // masterCnv.height = 400
-        // const ctx1 = masterCnv.getContext('2d')
+        const cnv1 = document.querySelector('#cnv1')
+        cnv1.width = ww
+        cnv1.height = wh
+        const ctx1 = cnv1.getContext('2d')
 
 
-        let size = Math.random()*100
-        let pos = Math.random()*50
+        let size = Math.random()*ww
+        let pos = Math.random()*ww
 
+        function draw(){
+            ctx1.strokeRect(e.relativeX, pos, size, size);
+            ctx1.strokeRect(pos*2, pos*2, size/3, size/3);
+        }
+        draw()
         
-        // for(let )
+        document.addEventListener("mouseMove",
+        mouseMoveHandler, false)
 
-        function newPos() {
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-            draw()
+        function mouseMoveHandler(e){
+            const relativeX = e.clientX - canvas.offsetLeft;
+            if (relativeX > 0 && relativeX < canvas.width) {
+                paddleX = relativeX - paddleWidth / 2;
+            }
         }
 
-        newPos()
+
+     
+
+        
+        // // for(let )
+
+        // function newPos() {
+        //     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        //     draw()
+        // }
+        // newPos()
 
 
 
