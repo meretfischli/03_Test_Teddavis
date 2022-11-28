@@ -12,7 +12,12 @@
             margin: 0;
         }
 
-        canvas {
+        #cnv0 {
+            background: pink;
+            display: block;
+        }
+
+        #cnv1 {
             background: grey;
             display: block;
         }
@@ -27,6 +32,7 @@
 <body>
 
     <!-- <canvas id="master-cnv"></canvas> -->
+    <canvas id="cnv0" width="500" height="500"></canvas>
     <canvas id="cnv1" width="500" height="500"></canvas>
 
     <script src="rect_random.js"></script>
@@ -47,27 +53,41 @@
         const wh = window.innerHeight
 
         //hello
+        const ctx0 = cnv0.getContext('2d')
+
+        for(let i = 0; i < 3; i++) {
+            const cnv0 = document.querySelector('#cnv0')
+            cnv0.width = 400
+            cnv0.height = 400
+            const ctx0 = cnv0.getContext('2d')
+        }
+        
+
 
         const cnv1 = document.querySelector('#cnv1')
         cnv1.width = ww
         cnv1.height = wh
         const ctx1 = cnv1.getContext('2d')
 
+        // const cnvX = document.querySelector('#cnv1')
 
-        let size = Math.random() * ww
-        let posX = Math.random() * ww
-        let posY = Math.random() * ww
+
+
+        // let size = Math.random() * ww
+        // let posX = Math.random() * ww
+        // let posY = Math.random() * ww
 
         let x; 
         let y;
 
         function draw() {
-            ctx1.strokeRect(x, y, size, size);
-            beginPath()
-            ctx.strokeStyle = 'blue';
-            ctx.moveTo(20, 20);
-            ctx.lineTo(200, 20);
-            ctx.stroke();
+            // ctx1.strokeRect(x, y, size, size);
+
+            ctx1.beginPath()
+            ctx1.strokeStyle = 'blue';
+            ctx1.moveTo(20, 30);
+            ctx1.lineTo(x, y);
+            ctx1.stroke();
         }
 
         function mouseMove(canvas, e) {
@@ -84,11 +104,27 @@
 
         cnv1.addEventListener("mousemove", function(e) {
             mouseMove(cnv1, e);
+
+            ctx0.drawImage(cnv1, 100, 100, 400, 400, 0, 0, 1000, 1000)
         });
         // document.addEventListener("mouseMove", mouseMove)
 
 
+        cnv1.addEventListener('load', () => {
+            const nw = cnv1.naturalWidth
+            const nh = cnv1.naturalHeight
 
+            // ctx0.drawImage(cnv1, 0, 0, 400, 400, 0, 0, 100, 100)
+
+        })
+
+        // ctx1.drawImage(document.getElementById('cnv1'),
+        //     200, 200, 400, 400, 0, 0, 100, 100)
+        
+
+        // function draw2() {
+
+        // }
 
 
         // // for(let )
